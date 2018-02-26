@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes>
+    <!--Exemple de routes :
+    <route name="general_accueil" path="^/accueil" controller="general" method="index" />
+    <route name="admin_user_logout" path="^/user/logout" controller="user" method="logout" />-->
+</routes>
