@@ -2,8 +2,6 @@
 
 namespace Core\Auth;
 
-use App\Entity\User;
-use App\various\appHash;
 use Core\Database\Database;
 use Core\Exception\JojotiqueException;
 use Core\ORM\Classes\ORMEntity;

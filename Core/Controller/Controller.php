@@ -4,7 +4,7 @@ namespace Core\Controller;
 
 use Core\Auth\DBAuth;
 use Core\Exception\JojotiqueException;
-use Core\ORM\Classes\ORMSelect;
+use Jojotique\ORM\Classes\ORMSelect;
 use Psr\Container\ContainerInterface;
 use Twig_Environment;
 

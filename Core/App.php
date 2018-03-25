@@ -7,9 +7,9 @@ use Core\Auth\DBAuth;
 use Core\Controller\Controller;
 use Core\Controller\ControllerInterface;
 use Core\Exception\JojotiqueException;
-use Core\ORM\Classes\ORMSelect;
 use Core\Router\Route;
 use Core\Router\Router;
+use Jojotique\ORM\Classes\ORMSelect;
 use Psr\Container\ContainerInterface;
 use Twig_Environment;
 
@@ -90,8 +90,8 @@ class App
 
         //Récupère l'utilisateur connecté
         $appController = $this->container->get(AppController::class);
-        $appController->setSelect(new ORMSelect(dirname(__DIR__) . '/App/config/orm_config.php'));
-        $user = $appController->findUserConnected();
+        $appController->setSelect(new ORMSelect(dirname(__DIR__) . '/src/App/config/orm_config.php'));
+        $user = $_SESSION['user'];
 
         // Vérifie que si la route commence par un "admin", le User est bien connecté sinon le renvoie sur NotLog
         if ($extractPathRoute[1] === 'admin') {
@@ -113,7 +113,7 @@ class App
             $this->container->get(Twig_Environment::class),
             $this->container,
             $models,
-            new ORMSelect(dirname(__DIR__) . '/App/config/orm_config.php')
+            new ORMSelect(dirname(__DIR__) . '/src/App/config/orm_config.php')
         );
     }
 

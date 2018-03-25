@@ -8,4 +8,6 @@ return [
         'post'     => get(PostModel::class),
         'category' => get(CategoryModel::class)
     ]*/
+
+    'accueil.models' => []
 ];

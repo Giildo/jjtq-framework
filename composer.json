@@ -3,7 +3,7 @@
     "description": "Micro Framework PHP basé sur la structure de Symfony. MVC compatible.",
     "type": "project",
     "license": "Apache-2.0",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "authors": [
         {
             "name": "Giildo",
@@ -13,13 +13,13 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/App",
-            "Core\\": "src/Core"
+            "Core\\": "Core"
         }
     },
     "require": {
         "twig/twig": "^2.4",
         "php-di/php-di": "^5.4",
-        "jojotique/orm": "^1.0"
+        "jojotique/orm": "^1"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.2"
