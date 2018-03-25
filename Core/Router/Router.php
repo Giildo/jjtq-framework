@@ -1,15 +1,12 @@
 <?php
 
-namespace Core\Router;
+namespace Jojotique\Framework\Router;
 
-use App\Blog\Model\PostModel;
-use Core\Controller\ControllerInterface;
 use Psr\Container\ContainerInterface;
-use Twig_Environment;
 
 /**
  * Classes Router
- * @package Core\Router
+ * @package Jojotique\Framework\Router
  */
 class Router
 {

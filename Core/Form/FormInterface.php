@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Form;
+namespace Jojotique\Framework\Form;
 
 interface FormInterface
 {

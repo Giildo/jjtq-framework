@@ -1,14 +1,14 @@
 <?php
 
-namespace Core\Model;
+namespace Jojotique\Framework\Model;
 
-use Core\Database\Database;
-use Core\ORM\Interfaces\ORMModelInterface;
-use Core\ORM\Classes\ORMModel;
+use Jojotique\Framework\Database\Database;
+use Jojotique\Framework\ORM\Interfaces\ORMModelInterface;
+use Jojotique\Framework\ORM\Classes\ORMModel;
 
 /**
  * Classes Model
- * @package Core\Model
+ * @package Jojotique\Framework\Model
  */
 class Model extends ORMModel implements ORMModelInterface
 {

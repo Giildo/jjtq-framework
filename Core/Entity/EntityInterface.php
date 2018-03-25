@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Entity;
+namespace Jojotique\Framework\Entity;
 
-use Core\ORM\Classes\ORMTable;
+use Jojotique\Framework\ORM\Classes\ORMTable;
 
 interface EntityInterface
 {

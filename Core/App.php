@@ -1,21 +1,21 @@
 <?php
 
-namespace Core;
+namespace Jojotique\Framework;
 
 use App\Controller\AppController;
-use Core\Auth\DBAuth;
-use Core\Controller\Controller;
-use Core\Controller\ControllerInterface;
-use Core\Exception\JojotiqueException;
-use Core\Router\Route;
-use Core\Router\Router;
+use Jojotique\Framework\Auth\DBAuth;
+use Jojotique\Framework\Controller\Controller;
+use Jojotique\Framework\Controller\ControllerInterface;
+use Jojotique\Framework\Exception\JojotiqueException;
+use Jojotique\Framework\Router\Route;
+use Jojotique\Framework\Router\Router;
 use Jojotique\ORM\Classes\ORMSelect;
 use Psr\Container\ContainerInterface;
 use Twig_Environment;
 
 /**
  * Classes App
- * @package Core
+ * @package Jojotique\Framework
  */
 class App
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Auth;
+namespace Jojotique\Framework\Auth;
 
 trait appHash
 {

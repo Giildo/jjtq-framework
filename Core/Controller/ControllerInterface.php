@@ -1,12 +1,12 @@
 <?php
 
-namespace Core\Controller;
+namespace Jojotique\Framework\Controller;
 
-use Core\Exception\JojotiqueException;
+use Jojotique\Framework\Exception\JojotiqueException;
 
 /**
  * Classes Controller
- * @package Core\Controller
+ * @package Jojotique\Framework\Controller
  */
 interface ControllerInterface
 {

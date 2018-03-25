@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Exception;
+namespace Jojotique\Framework\Exception;
 
 use Exception;
 

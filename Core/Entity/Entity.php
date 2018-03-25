@@ -1,14 +1,14 @@
 <?php
 
-namespace Core\Entity;
+namespace Jojotique\Framework\Entity;
 
-use Core\ORM\Classes\ORMEntity;
+use Jojotique\Framework\ORM\Classes\ORMEntity;
 
 /**
  * Fait le lien entre les entités de l'application et l'ORMEntity
  *
  * Class Entity
- * @package Core\Entity
+ * @package Jojotique\Framework\Entity
  */
 class Entity extends ORMEntity
 {

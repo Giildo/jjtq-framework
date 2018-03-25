@@ -1,16 +1,16 @@
 <?php
 
-namespace Core\Controller;
+namespace Jojotique\Framework\Controller;
 
-use Core\Auth\DBAuth;
-use Core\Exception\JojotiqueException;
+use Jojotique\Framework\Auth\DBAuth;
+use Jojotique\Framework\Exception\JojotiqueException;
 use Jojotique\ORM\Classes\ORMSelect;
 use Psr\Container\ContainerInterface;
 use Twig_Environment;
 
 /**
  * Classes Controller
- * @package Core\Controller
+ * @package Jojotique\Framework\Controller
  */
 class Controller implements ControllerInterface
 {

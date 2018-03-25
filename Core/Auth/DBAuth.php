@@ -1,10 +1,10 @@
 <?php
 
-namespace Core\Auth;
+namespace Jojotique\Framework\Auth;
 
-use Core\Database\Database;
-use Core\Exception\JojotiqueException;
-use Core\ORM\Classes\ORMEntity;
+use Jojotique\Framework\Database\Database;
+use Jojotique\Framework\Exception\JojotiqueException;
+use Jojotique\Framework\ORM\Classes\ORMEntity;
 
 /**
  * Sert à la gestion de la connexion. Permet de :
@@ -14,7 +14,7 @@ use Core\ORM\Classes\ORMEntity;
  * - vérifier si l'utilisateur est administrateur
  * Class DBAuth
  * @uses appHash
- * @package Core\Auth
+ * @package Jojotique\Framework\Auth
  */
 class DBAuth
 {

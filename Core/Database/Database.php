@@ -1,12 +1,12 @@
 <?php
 
-namespace Core\Database;
+namespace Jojotique\Framework\Database;
 
 use PDO;
 
 /**
  * Classes Database
- * @package Core\Database
+ * @package Jojotique\Framework\Database
  */
 class Database
 {

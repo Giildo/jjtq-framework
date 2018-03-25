@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Twig;
+namespace Jojotique\Framework\Twig;
 
 use Twig_Extension;
 use Twig_SimpleFilter;
@@ -9,7 +9,7 @@ use Twig_SimpleFilter;
  * Extension pour les texts dans Twig
  *
  * Classes TextExtension
- * @package Core\Twig
+ * @package Jojotique\Framework\Twig
  */
 class TextExtension extends Twig_Extension
 {

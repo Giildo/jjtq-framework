@@ -1,12 +1,12 @@
 <?php
 
-namespace Core\Form;
+namespace Jojotique\Framework\Form;
 
 /**
  * Classe qui permet de créer un formulaire avec des "class" Bootstrap
  *
  * Class BootstrapForm
- * @package Core\Form
+ * @package Jojotique\Framework\Form
  */
 class BootstrapForm extends Form implements FormInterface
 {

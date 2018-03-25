@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Router;
+namespace Jojotique\Framework\Router;
 
 class Route
 {

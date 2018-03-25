@@ -3,7 +3,7 @@
     "description": "Micro Framework PHP basé sur la structure de Symfony. MVC compatible.",
     "type": "project",
     "license": "Apache-2.0",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "authors": [
         {
             "name": "Giildo",
@@ -13,7 +13,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/App",
-            "Core\\": "Core"
+            "Jojotique\\Framework\\": "Core"
         }
     },
     "require": {
