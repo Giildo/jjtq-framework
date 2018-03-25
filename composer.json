@@ -11,13 +11,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "App\\": "src/App",
             "Jojotique\\Framework\\": "Core"
         }
     },
     "require": {
         "twig/twig": "^2.4",
         "php-di/php-di": "^5.4",
-        "jojotique/orm": "^1"
+        "jojotique/orm": "^1.0"
     }
 }
