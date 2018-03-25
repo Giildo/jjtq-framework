@@ -1,8 +1,8 @@
 .idea/*
 /vendor/
 
-/public/*
-/src/*
-/views/*
+public/*
+src/*
+views/*
 
 composer.lock
