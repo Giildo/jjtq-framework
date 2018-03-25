@@ -1,8 +1,9 @@
 {
-    "name": "jojotique/bethlehem",
-    "description": "Application de gestion pour la commande des repas",
+    "name": "jojotique/framework-php",
+    "description": "Micro Framework PHP basé sur la structure de Symfony. MVC compatible.",
     "type": "project",
-    "license": "proprietary",
+    "license": "Apache-2.0",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Giildo",
@@ -17,7 +18,8 @@
     },
     "require": {
         "twig/twig": "^2.4",
-        "php-di/php-di": "^5.4"
+        "php-di/php-di": "^5.4",
+        "jojotique/orm": "^1.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.2"

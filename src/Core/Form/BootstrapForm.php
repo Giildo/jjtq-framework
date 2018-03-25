@@ -2,6 +2,12 @@
 
 namespace Core\Form;
 
+/**
+ * Classe qui permet de créer un formulaire avec des "class" Bootstrap
+ *
+ * Class BootstrapForm
+ * @package Core\Form
+ */
 class BootstrapForm extends Form implements FormInterface
 {
     /**
@@ -10,13 +16,10 @@ class BootstrapForm extends Form implements FormInterface
      */
     public function fieldset(string $legend, ?string $class = ' form-group'): void
     {
-
         parent::fieldset($legend, $class);
     }
 
     /**
-     * Retourne un champ de type input
-     *
      * @param string $name
      * @param null|string $label
      * @param null|string $value
@@ -41,8 +44,6 @@ class BootstrapForm extends Form implements FormInterface
     }
 
     /**
-     * Retourne un champ de type TextArea
-     *
      * @param string $name
      * @param null|string $label
      * @param int|null $rows
@@ -65,8 +66,6 @@ class BootstrapForm extends Form implements FormInterface
     }
 
     /**
-     * Retourne un champ de type select
-     *
      * @param string $name
      * @param array $options
      * @param null|string $optionCurrent
@@ -88,14 +87,12 @@ class BootstrapForm extends Form implements FormInterface
     }
 
     /**
-     * Retourne un bouton de validation
-     *
-     * @param string $text
+     * @param null|string $text
      * @param null|string $type
      * @param null|string $class
      * @return string
      */
-    public function submit(string $text, ?string $type = 'button', ?string $class = ''): string
+    public function submit(?string $text = 'Valider', ?string $type = 'button', ?string $class = ''): string
     {
         $class .= ' btn btn-primary';
 

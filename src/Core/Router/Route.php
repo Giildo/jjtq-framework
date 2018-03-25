@@ -36,12 +36,8 @@ class Route
      * @param string $controller
      * @param string $nameMethod
      */
-    public function __construct(
-        string $name,
-        string $path,
-        string $controller,
-        string $nameMethod
-    ) {
+    public function __construct(string $name, string $path, string $controller, string $nameMethod)
+    {
         $this->name = $name;
         $this->path = $path;
         $this->controller = $controller;

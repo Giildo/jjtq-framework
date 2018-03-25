@@ -3,12 +3,13 @@
 namespace Core\Controller;
 
 use Core\Auth\DBAuth;
-use Core\Entity\EntityInterface;
+use Core\Exception\JojotiqueException;
+use Core\ORM\Classes\ORMSelect;
 use Psr\Container\ContainerInterface;
 use Twig_Environment;
 
 /**
- * Class Controller
+ * Classes Controller
  * @package Core\Controller
  */
 class Controller implements ControllerInterface
@@ -29,15 +30,21 @@ class Controller implements ControllerInterface
     protected $auth;
 
     /**
+     * @var ORMSelect
+     */
+    protected $select;
+
+    /**
      * Controller constructor.
      *
      * @param Twig_Environment $twig
      * @param ContainerInterface $container
      * @param array|null $models
+     * @param ORMSelect $select
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function __construct(Twig_Environment $twig, ContainerInterface $container, ?array $models = [])
+    public function __construct(Twig_Environment $twig, ContainerInterface $container, ?array $models = [], ?ORMSelect $select = null)
     {
         $this->twig = $twig;
         $this->container = $container;
@@ -47,27 +54,30 @@ class Controller implements ControllerInterface
         }
 
         $this->auth = $this->container->get(DBAuth::class);
+        $this->select = $select;
     }
 
     /**
-     * Lance la méthode passée en paramètres en lui ajoutant si besoin des les paramètres
+     * Lit la méthode récupérée dans la route, vérifie que celle-ci est bien présente dans le contrôleur,
+     * sinon renvoie une erreur.
      *
      * @param string $nameMethod
      * @param array|null $vars
      * @return void
-     * @throws \Exception
+     * @throws JojotiqueException
      */
     public function run(string $nameMethod, ?array $vars = []): void
     {
         if (is_callable([$this, $nameMethod])) {
             $this->$nameMethod($vars);
         } else {
-            throw new \Exception('The method called isn\'t a class method');
+            $className = get_class($this);
+            throw new JojotiqueException("\"{$nameMethod}\" n'est pas une méthode de \"{$className}\"", JojotiqueException::ROUTE_METHOD_ERROR);
         }
     }
 
     /**
-     * Envoie une vue Twig pour la page 404
+     * Renvoie vers la page 404
      *
      * @return void
      */
@@ -79,7 +89,7 @@ class Controller implements ControllerInterface
     }
 
     /**
-     * Envoie une vue Twig pour la page 404
+     * Renvoie vers la page de connexion
      *
      * @return void
      */
@@ -90,7 +100,12 @@ class Controller implements ControllerInterface
         die();
     }
 
-    public function renderErrorNotAdmin()
+    /**
+     * Renvoie vers une page d'erreur qui affiche que la page n'est accessible que pour les administrateurs
+     *
+     * @return void
+     */
+    public function renderErrorNotAdmin(): void
     {
         header('HTTP/1.1 301 Not Found');
         header('Location: /error/notAdmin');
@@ -98,7 +113,7 @@ class Controller implements ControllerInterface
     }
 
     /**
-     * Envoie une vue Twig avec les éléments nécessaire à son traitement
+     * @uses Twig_Environment::render() : Fait le lien avec la fonction render de Twig
      *
      * @param string $nameView
      * @param array|null $twigVariable
@@ -109,14 +124,14 @@ class Controller implements ControllerInterface
      */
     protected function render(string $nameView, ?array $twigVariable = []): void
     {
-        $twigVariable['sessionConfirmConnect'] = $this->auth->logged();
-        $twigVariable['sessionAdmin'] = $_SESSION['user']['idAdmin'] === '1';
-
         echo $this->twig->render($nameView, $twigVariable);
     }
 
     /**
-     * Méthode de redirection
+     * Méthode de redirection, récupère le chemin en paramètre et renvoie.
+     *
+     * @param string $path
+     * @return void
      */
     public function redirection(string $path): void
     {
@@ -126,6 +141,9 @@ class Controller implements ControllerInterface
     }
 
     /**
+     * Récupère le tableau, envoyé par le container lors de la construction depuis le fichier de config.
+     * Ajoute "Model" à la fin des noms et le chemin de création et créé les models.
+     *
      * @param array $models
      * @return void
      */
@@ -140,77 +158,13 @@ class Controller implements ControllerInterface
         }
     }
 
-    /**
-     * @param array $vars
-     * @param int $nbItem
-     * @param null|string $optionLimit
-     * @return array
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
-     */
-    protected function pagination(array $vars, int $nbItem, ?string $optionLimit = 'blog.limit.post'): array
-    {
-        $pagination = [];
-
-        $pagination['limit'] = $this->container->get($optionLimit);
-
-        $pagination['id'] = $vars['id'];
-
-        $pagination['pageNb'] = ceil($nbItem / $pagination['limit']);
-        $pagination['start'] = ($pagination['limit'] * ($pagination['id'] - 1));
-
-        $pagination['next'] = ($pagination['id'] + 1 <= $pagination['pageNb']) ? $pagination['id'] + 1 : null;
-        $pagination['previous'] = ($pagination['id'] - 1 >= 1) ? $pagination['id'] - 1 : null;
-
-        return $pagination;
-    }
+    /** Getters - Setters */
 
     /**
-     * Génère un tableau qui va regrouper les éléments passés en post ou non
-     *
-     * @param array $keys
-     * @return string[]
+     * @param ORMSelect $select
      */
-    protected function createPost(array $keys): array
+    public function setSelect(ORMSelect $select): void
     {
-        $post = [];
-
-        foreach ($keys as $key) {
-            $post[$key] = (isset($_POST[$key])) ? $_POST[$key] : '';
-        }
-
-        return $post;
-    }
-
-    /**
-     * Génère un tableau qui va regrouper les éléments passés en post ou non
-     *
-     * @param array $keys
-     * @param array $posts
-     * @param EntityInterface $entity
-     * @return string[]
-     */
-    protected function createPostWithEntity(array $keys, array $posts, EntityInterface $entity): array
-    {
-        foreach ($keys as $key) {
-            $method = 'get' . ucfirst($key);
-            $posts[$key] = (empty($posts[$key])) ? $entity->$method() : $posts[$key];
-        }
-
-        return $posts;
-    }
-
-    /**
-     * @param EntityInterface[] $entities
-     * @param string $method
-     * @return string[]
-     */
-    protected function createSelectOptions(array $entities, string $method): array
-    {
-        $selectOptions = [];
-        foreach ($entities as $entity) {
-            $selectOptions[] = $entity->$method();
-        }
-        return $selectOptions;
+        $this->select = $select;
     }
 }

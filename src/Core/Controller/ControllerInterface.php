@@ -2,31 +2,51 @@
 
 namespace Core\Controller;
 
-use Psr\Container\ContainerInterface;
-use Twig_Environment;
+use Core\Exception\JojotiqueException;
 
 /**
- * Interface ControllerInterface
+ * Classes Controller
  * @package Core\Controller
  */
 interface ControllerInterface
 {
     /**
-     * Controller constructor.
-     *
-     * @param Twig_Environment $twig
-     * @param ContainerInterface $container
-     * @param array|null $models
-     */
-    public function __construct(Twig_Environment $twig, ContainerInterface $container, ?array $models = []);
-
-    /**
-     * Lance la méthode passée en paramètres en lui ajoutant si besoin des les paramètres
+     * Lit la méthode récupérée dans la route, vérifie que celle-ci est bien présente dans le contrôleur,
+     * sinon renvoie une erreur.
      *
      * @param string $nameMethod
      * @param array|null $vars
      * @return void
-     * @throws \Exception
+     * @throws JojotiqueException
      */
     public function run(string $nameMethod, ?array $vars = []): void;
+
+    /**
+     * Renvoie vers la page 404
+     *
+     * @return void
+     */
+    public function render404(): void;
+
+    /**
+     * Renvoie vers la page de connexion
+     *
+     * @return void
+     */
+    public function renderNotLog(): void;
+
+    /**
+     * Renvoie vers une page d'erreur qui affiche que la page n'est accessible que pour les administrateurs
+     *
+     * @return void
+     */
+    public function renderErrorNotAdmin(): void;
+
+    /**
+     * Méthode de redirection, récupère le chemin en paramètre et renvoie.
+     *
+     * @param string $path
+     * @return void
+     */
+    public function redirection(string $path): void;
 }
