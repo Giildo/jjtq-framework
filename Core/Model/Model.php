@@ -40,14 +40,4 @@ class Model extends ORMModel implements ORMModelInterface
     {
         return $this->pdo->query("SELECT COUNT(id) FROM {$this->table}")->fetchColumn();
     }
-
-    /** Getters - Setters */
-
-    /**
-     * @return null
-     */
-    public function getTable()
-    {
-        return $this->table;
-    }
 }
