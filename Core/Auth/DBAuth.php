@@ -4,7 +4,7 @@ namespace Jojotique\Framework\Auth;
 
 use Jojotique\Framework\Database\Database;
 use Jojotique\Framework\Exception\JojotiqueException;
-use Jojotique\Framework\ORM\Classes\ORMEntity;
+use Jojotique\ORM\Classes\ORMEntity;
 
 /**
  * Sert à la gestion de la connexion. Permet de :

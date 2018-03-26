@@ -2,7 +2,7 @@
 
 namespace Jojotique\Framework\Entity;
 
-use Jojotique\Framework\ORM\Classes\ORMEntity;
+use Jojotique\ORM\Classes\ORMEntity;
 
 /**
  * Fait le lien entre les entités de l'application et l'ORMEntity

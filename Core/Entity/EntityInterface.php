@@ -2,7 +2,7 @@
 
 namespace Jojotique\Framework\Entity;
 
-use Jojotique\Framework\ORM\Classes\ORMTable;
+use Jojotique\ORM\Classes\ORMTable;
 
 interface EntityInterface
 {

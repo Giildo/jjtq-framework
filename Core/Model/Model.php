@@ -3,8 +3,8 @@
 namespace Jojotique\Framework\Model;
 
 use Jojotique\Framework\Database\Database;
-use Jojotique\Framework\ORM\Interfaces\ORMModelInterface;
-use Jojotique\Framework\ORM\Classes\ORMModel;
+use Jojotique\ORM\Classes\ORMModel;
+use Jojotique\ORM\Interfaces\ORMModelInterface;
 
 /**
  * Classes Model
