@@ -90,7 +90,7 @@ class App
 
         //Récupère l'utilisateur connecté
         $appController = $this->container->get(AppController::class);
-        $appController->setSelect(new ORMSelect(dirname(__DIR__) . '/src/App/config/orm_config.php'));
+        $appController->setSelect(new ORMSelect($this->container->get('orm.config')));
         $user = $_SESSION['user'];
 
         // Vérifie que si la route commence par un "admin", le User est bien connecté sinon le renvoie sur NotLog
@@ -113,7 +113,7 @@ class App
             $this->container->get(Twig_Environment::class),
             $this->container,
             $models,
-            new ORMSelect(dirname(__DIR__) . '/src/App/config/orm_config.php')
+            new ORMSelect($this->container->get('orm.config'))
         );
     }
 
