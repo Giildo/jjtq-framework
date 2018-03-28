@@ -116,7 +116,7 @@ class App
             $this->container,
             $models,
             new ORMSelect($this->container->get('orm.config')),
-            new ORMSelectJoinTable($this->container->get('orm.config'), $this->container->get(ORMModel::class))
+            new ORMSelectJoinTable($this->container->get(ORMModel::class))
         );
     }
 
