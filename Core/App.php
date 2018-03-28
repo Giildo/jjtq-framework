@@ -9,7 +9,9 @@ use Jojotique\Framework\Controller\ControllerInterface;
 use Jojotique\Framework\Exception\JojotiqueException;
 use Jojotique\Framework\Router\Route;
 use Jojotique\Framework\Router\Router;
+use Jojotique\ORM\Classes\ORMModel;
 use Jojotique\ORM\Classes\ORMSelect;
+use Jojotique\ORM\Classes\ORMSelectJoinTable;
 use Psr\Container\ContainerInterface;
 use Twig_Environment;
 
@@ -113,7 +115,8 @@ class App
             $this->container->get(Twig_Environment::class),
             $this->container,
             $models,
-            new ORMSelect($this->container->get('orm.config'))
+            new ORMSelect($this->container->get('orm.config')),
+            new ORMSelectJoinTable($this->container->get('orm.config'), $this->container->get(ORMModel::class))
         );
     }
 

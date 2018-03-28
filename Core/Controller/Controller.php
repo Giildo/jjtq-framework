@@ -5,6 +5,7 @@ namespace Jojotique\Framework\Controller;
 use Jojotique\Framework\Auth\DBAuth;
 use Jojotique\Framework\Exception\JojotiqueException;
 use Jojotique\ORM\Classes\ORMSelect;
+use Jojotique\ORM\Classes\ORMSelectJoinTable;
 use Psr\Container\ContainerInterface;
 use Twig_Environment;
 
@@ -35,16 +36,22 @@ class Controller implements ControllerInterface
     protected $select;
 
     /**
+     * @var ORMSelectJoinTable|null
+     */
+    protected $jointTable;
+
+    /**
      * Controller constructor.
      *
      * @param Twig_Environment $twig
      * @param ContainerInterface $container
      * @param array|null $models
      * @param ORMSelect $select
+     * @param ORMSelectJoinTable|null $jointTable
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function __construct(Twig_Environment $twig, ContainerInterface $container, ?array $models = [], ?ORMSelect $select = null)
+    public function __construct(Twig_Environment $twig, ContainerInterface $container, ?array $models = [], ?ORMSelect $select = null, ?ORMSelectJoinTable $jointTable = null)
     {
         $this->twig = $twig;
         $this->container = $container;
@@ -55,6 +62,7 @@ class Controller implements ControllerInterface
 
         $this->auth = $this->container->get(DBAuth::class);
         $this->select = $select;
+        $this->jointTable = $jointTable;
     }
 
     /**
